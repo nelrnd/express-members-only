@@ -1,0 +1,19 @@
+{
+  "name": "express-members-only",
+  "version": "1.0.0",
+  "description": "A exclusive club web app where users can write anonymous posts. Only users with membership status can see who wrote the post. Project carried out as part of The Odin Project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nelrnd/express-members-only.git"
+  },
+  "author": "Nel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nelrnd/express-members-only/issues"
+  },
+  "homepage": "https://github.com/nelrnd/express-members-only#readme"
+}
