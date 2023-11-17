@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/nelrnd/express-members-only/issues"
   },
-  "homepage": "https://github.com/nelrnd/express-members-only#readme"
+  "homepage": "https://github.com/nelrnd/express-members-only#readme",
+  "dependencies": {
+    "mongoose": "^8.0.1"
+  }
 }
