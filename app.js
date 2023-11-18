@@ -62,13 +62,13 @@ main().catch((err) => console.error(err))
 
 // Handle routes
 
+const indexRouter = require("./routes/index")
 const authRouter = require("./routes/auth")
 const postRouter = require("./routes/post")
 const authController = require("./controllers/authController")
 
+app.use(indexRouter)
 app.use(authRouter)
 app.use("/posts", postRouter)
-
-app.get("/", authController.ensure_logged_in, (req, res) => res.render("index"))
 
 app.listen(3000)

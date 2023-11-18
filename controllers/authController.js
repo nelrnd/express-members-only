@@ -21,7 +21,11 @@ exports.sign_up_post = asyncHandler(async (req, res, next) => {
 })
 
 exports.log_in_get = (req, res, next) => {
-  res.render("log-in-form")
+  console.log(process.env.USER_EMAIL)
+  res.render("log-in-form", {
+    user_email: process.env.USER_EMAIL,
+    user_password: process.env.USER_PASSWORD,
+  })
 }
 
 exports.log_in_post = passport.authenticate("local", {
