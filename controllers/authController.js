@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs")
 const asyncHandler = require("express-async-handler")
 
 exports.sign_up_get = (req, res, next) => {
-  res.render("sign-up-form")
+  res.render("sign-up-form", { title: "Sign up" })
 }
 
 exports.sign_up_post = asyncHandler(async (req, res, next) => {
@@ -22,6 +22,7 @@ exports.sign_up_post = asyncHandler(async (req, res, next) => {
 
 exports.log_in_get = (req, res, next) => {
   res.render("log-in-form", {
+    title: "Log in",
     user_email: process.env.USER_EMAIL,
     user_password: process.env.USER_PASSWORD,
   })

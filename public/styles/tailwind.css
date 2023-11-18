@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply bg-indigo-500 px-6 py-3 rounded text-white font-medium hover:bg-indigo-600;
+  }
+
+  .form-control {
+    @apply mt-1 p-3 block w-full bg-transparent text-white border-slate-600 rounded focus:border-indigo-500 focus:ring focus:ring-indigo-700 focus:ring-opacity-10;
+  }
+
+  .link-text {
+    @apply text-indigo-500 hover:underline;
+  }
+}
