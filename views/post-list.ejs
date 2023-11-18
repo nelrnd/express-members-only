@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/style.css" />
   </head>
   <body>
+    <h1 class="text-red-900"><%= title %></h1>
     <% for (let post of post_list) { %>
     <div>
       <h2><%= post.title %></h2>

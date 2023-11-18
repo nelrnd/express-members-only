@@ -4,7 +4,8 @@
   "description": "A exclusive club web app where users can write anonymous posts. Only users with membership status can see who wrote the post. Project carried out as part of The Odin Project.",
   "main": "app.js",
   "scripts": {
-    "devstart": "nodemon app"
+    "devstart": "nodemon app",
+    "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/nelrnd/express-members-only#readme",
   "dependencies": {
+    "autoprefixer": "^10.4.16",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
@@ -25,7 +27,10 @@
     "express-session": "^1.17.3",
     "mongoose": "^8.0.1",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.5"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
