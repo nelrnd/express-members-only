@@ -63,9 +63,10 @@ main().catch((err) => console.error(err))
 // Handle routes
 
 const authRouter = require("./routes/auth")
+const authController = require("./controllers/authController")
 
 app.use(authRouter)
 
-app.get("/", (req, res) => res.render("index"))
+app.get("/", authController.ensure_logged_in, (req, res) => res.render("index"))
 
 app.listen(3000)
