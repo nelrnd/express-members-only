@@ -14,24 +14,21 @@
       <form class="w-full mt-4 flex flex-col gap-4" action="" method="POST">
         <div>
           <label class="text-slate-400" for="email">Email</label>
-          <input
-            class="form-control"
-            type="email"
-            id="email"
-            name="email"
-            value="<%= user_email || '' %>"
-          />
+          <input class="form-control" type="email" id="email" name="email" value="<%=
+          locals.user?user.email:"" %>" />
         </div>
         <div>
           <label class="text-slate-400" for="password">Password</label>
-          <input
-            class="form-control"
-            type="password"
-            id="password"
-            name="password"
-            value="<%= user_password || '' %>"
-          />
+          <input class="form-control" type="password" id="password" name="password" value="<%=
+          locals.user?user.password:"" %>" />
         </div>
+        <% if (locals.errors && errors.length) { %>
+        <div class="flex flex-col gap-3">
+          <% for (let error of errors) { %>
+          <div class="bg-red-500 bg-opacity-20 text-red-500 p-2 rounded"><%= error.msg %></div>
+          <% } %>
+        </div>
+        <% } %>
         <button class="btn-primary mt-4">Log in</button>
       </form>
       <p class="mt-8 text-slate-400">

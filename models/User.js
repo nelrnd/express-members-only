@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   first_name: { type: String, required: true, length: { min: 3 } },
   last_name: { type: String, required: true, length: { min: 3 } },
   email: { type: String, required: true, unique: true, validate: validateEmail },
-  password: { type: String, required: true },
+  password: { type: String, required: true, length: { min: 8 } },
   membership_status: { type: String, enum: ["admin", "member", "outsider"] },
 })
 

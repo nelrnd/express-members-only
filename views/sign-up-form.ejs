@@ -14,44 +14,38 @@
       <form class="w-full mt-4 flex flex-col gap-4" action="" method="POST">
         <div>
           <label class="text-slate-400" for="email">Email</label>
-          <input
-            class="form-control"
-            type="email"
-            id="email"
-            name="email"
-            placeholder="john.doe@email.com"
-          />
+          <input class="form-control" type="email" id="email" name="email"
+          placeholder="john.doe@email.com" value="<%= locals.user?user.email:"" %>" />
         </div>
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label class="text-slate-400" for="first_name">First name</label>
-            <input
-              class="form-control"
-              type="text"
-              id="first_name"
-              name="first_name"
-              placeholder="John"
-            />
+            <input class="form-control" type="text" id="first_name" name="first_name"
+            placeholder="John" value="<%= locals.user?user.first_name:"" %>" />
           </div>
           <div>
             <label class="text-slate-400" for="last_name">Last name</label>
-            <input
-              class="form-control"
-              type="text"
-              id="last_name"
-              name="last_name"
-              placeholder="Doe"
-            />
+            <input class="form-control" type="text" id="last_name" name="last_name"
+            placeholder="Doe" value="<%= locals.user?user.last_name:"" %>" />
           </div>
         </div>
         <div>
           <label class="text-slate-400" for="password">Password</label>
-          <input class="form-control" type="password" id="password" name="password" />
+          <input class="form-control" type="password" id="password" name="password" value="<%=
+          locals.user?user.password:"" %>" />
         </div>
         <div>
-          <label class="text-slate-400" for="confirmPassword">Confirm password</label>
-          <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" />
+          <label class="text-slate-400" for="confirm_password">Confirm password</label>
+          <input class="form-control" type="password" id="confirm_password" name="confirm_password"
+          value="<%= locals.user?user.confirm_password:"" %>" />
         </div>
+        <% if (locals.errors && errors.length) { %>
+        <div class="flex flex-col gap-3">
+          <% for (let error of errors) { %>
+          <div class="bg-red-500 bg-opacity-20 text-red-500 p-2 rounded"><%= error.msg %></div>
+          <% } %>
+        </div>
+        <% } %>
         <button class="btn-primary mt-4">Sign up</button>
       </form>
       <p class="mt-8 text-slate-400">
