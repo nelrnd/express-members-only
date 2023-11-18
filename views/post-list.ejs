@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title><%= title %></title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
-  <body>
-    <h1 class="text-red-900"><%= title %></h1>
-    <% for (let post of post_list) { %>
-    <div>
-      <h2><%= post.title %></h2>
-      <p><%= post.text %></p>
+  <body class="bg-slate-950">
+    <%- include("navbar") %>
+
+    <div class="max-w-2xl m-auto mt-10">
+      <h1 class="mb-6 text-2xl text-white font-bold">All posts</h1>
+      <% if (post_list.length) { %> <% for (let post of post_list) { %> <%- include("post", { post:
+      post }) %> <% } %> <% } else { %>
+      <div class="bg-slate-900 p-6">
+        <p class="text-slate-400 text-center">No post here yet... <span class="ml-2">👻</span></p>
+      </div>
+      <% } %>
     </div>
-    <% } %>
   </body>
 </html>

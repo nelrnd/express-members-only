@@ -8,7 +8,7 @@ exports.post_list = asyncHandler(async (req, res, next) => {
 })
 
 exports.post_create_get = (req, res, next) => {
-  res.render("post-form")
+  res.render("post-form", { title: "Create post" })
 }
 
 exports.post_create_post = asyncHandler(async (req, res, next) => {
