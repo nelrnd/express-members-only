@@ -17,7 +17,7 @@ exports.sign_up_post = asyncHandler(async (req, res, next) => {
     membership_status: "outsider",
   })
   user.save()
-  res.redirect("/")
+  next()
 })
 
 exports.log_in_get = (req, res, next) => {
