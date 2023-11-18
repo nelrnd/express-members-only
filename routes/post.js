@@ -1,0 +1,10 @@
+const express = require("express")
+const Router = express.Router()
+const postController = require("../controllers/postController")
+const authController = require("../controllers/authController")
+
+Router.get("/create", authController.ensure_logged_in, postController.post_create_get)
+
+Router.post("/create", authController.ensure_logged_in, postController.post_create_post)
+
+module.exports = Router
