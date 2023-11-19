@@ -7,6 +7,8 @@ const LocalStrategy = require("passport-local")
 const bcrypt = require("bcryptjs")
 const session = require("express-session")
 const User = require("./models/User")
+const compression = require("compression")
+const helmet = require("helmet")
 
 // Define and configure app
 
@@ -16,6 +18,13 @@ app.set("view engine", "ejs")
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
+app.use(compression())
+app.use(helmet())
+
+// Setup rate limiter
+const RateLimit = require("express-rate-limit")
+const limiter = RateLimit({ windowMs: 1 * 60 * 1000, max: 20 })
+app.use(limiter)
 
 // Setup express-session and passport
 
