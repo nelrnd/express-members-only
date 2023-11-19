@@ -7,6 +7,7 @@
   "description": "A exclusive club web app where users can write anonymous posts. Only users with membership status can see who wrote the post. Project carried out as part of The Odin Project.",
   "main": "app.js",
   "scripts": {
+    "start": "node app",
     "devstart": "nodemon app",
     "tailwind:css": "postcss public/styles/tailwind.css -o public/styles/style.css --watch"
   },

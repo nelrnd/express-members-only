@@ -86,4 +86,4 @@ app.use(indexRouter)
 app.use(authRouter)
 app.use("/posts", postRouter)
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)
