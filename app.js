@@ -60,6 +60,13 @@ const mongoDB = process.env.MONGODB_URI
 const main = async () => mongoose.connect(mongoDB)
 main().catch((err) => console.error(err))
 
+// Set middleware to access user from locals
+
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
+
 // Handle routes
 
 const indexRouter = require("./routes/index")

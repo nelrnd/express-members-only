@@ -3,9 +3,11 @@
     <li>
       <a class="btn btn-small" href="/">Home</a>
     </li>
+    <% if (locals.user && user.membership_status !== "member") { %>
     <li>
       <a class="btn btn-small" href="/join-club">Join club</a>
     </li>
+    <% } %>
     <li>
       <a class="btn-primary btn-small w-fit" href="/posts/create">Create post</a>
     </li>

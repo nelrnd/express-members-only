@@ -28,3 +28,11 @@ exports.join_club_post = [
     res.redirect("/")
   }),
 ]
+
+exports.ensure_not_in_club = (req, res, next) => {
+  if (req.user.membership_status !== "member") {
+    next()
+  } else {
+    res.redirect("/")
+  }
+}

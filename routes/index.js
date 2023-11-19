@@ -6,8 +6,18 @@ const userController = require("../controllers/userController")
 
 Router.get("/", authController.ensure_logged_in, postController.post_list)
 
-Router.get("/join-club", authController.ensure_logged_in, userController.join_club_get)
+Router.get(
+  "/join-club",
+  authController.ensure_logged_in,
+  userController.ensure_not_in_club,
+  userController.join_club_get
+)
 
-Router.post("/join-club", authController.ensure_logged_in, userController.join_club_post)
+Router.post(
+  "/join-club",
+  authController.ensure_logged_in,
+  userController.ensure_not_in_club,
+  userController.join_club_post
+)
 
 module.exports = Router

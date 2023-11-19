@@ -3,7 +3,15 @@ const asyncHandler = require("express-async-handler")
 const { body, validationResult } = require("express-validator")
 
 exports.post_list = asyncHandler(async (req, res, next) => {
-  const allPosts = await Post.find().sort({ timestamp: -1 }).exec()
+  let allPosts = await Post.find().populate("user").sort({ timestamp: -1 }).exec()
+
+  if (req.user.membership_status !== "member") {
+    allPosts.forEach((post) => {
+      if (post.user._id.toString() !== req.user._id.toString()) {
+        post.user = null
+      }
+    })
+  }
 
   res.render("post-list", { title: "Home", post_list: allPosts })
 })
