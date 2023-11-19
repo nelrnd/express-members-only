@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator")
 exports.post_list = asyncHandler(async (req, res, next) => {
   let allPosts = await Post.find().populate("user").sort({ timestamp: -1 }).exec()
 
-  if (req.user.membership_status !== "member") {
+  if (req.user.membership_status === "outsider") {
     allPosts.forEach((post) => {
       if (post.user._id.toString() !== req.user._id.toString()) {
         post.user = null
@@ -55,3 +55,12 @@ exports.post_create_post = [
     res.redirect("/")
   }),
 ]
+
+exports.post_delete_get = (req, res, next) => {
+  res.render("post-delete-form", { title: "Delete post", post_id: req.params.id })
+}
+
+exports.post_delete_post = asyncHandler(async (req, res, next) => {
+  await Post.findByIdAndDelete(req.body.post_id)
+  res.redirect("/")
+})

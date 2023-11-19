@@ -25,5 +25,7 @@
     </svg>
     <span>Join the club to see who wrote this post.</span>
   </div>
+  <% } %> <% if (user.membership_status === "admin") { %>
+  <a class="btn-secondary btn-small w-fit mt-3" href="<%= `/posts/${post._id}/delete` %>">Delete</a>
   <% } %>
 </div>

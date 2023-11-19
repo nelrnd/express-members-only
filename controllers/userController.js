@@ -36,3 +36,11 @@ exports.ensure_not_in_club = (req, res, next) => {
     res.redirect("/")
   }
 }
+
+exports.ensure_admin = (req, res, next) => {
+  if (req.user.membership_status === "admin") {
+    next()
+  } else {
+    res.redirect("/")
+  }
+}

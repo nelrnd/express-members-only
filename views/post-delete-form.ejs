@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body class="bg-slate-950">
+    <%- include("navbar") %>
+
+    <div class="bg-slate-900 max-w-xl p-10 m-auto mt-16">
+      <h1 class="mb-4 text-white text-2xl font-bold"><%= title %></h1>
+      <p class="mb-4 text-slate-400">Do you really want to delete this post?</p>
+      <form class="w-full mt-4 flex flex-col gap-4" action="" method="POST">
+        <input type="hidden" name="post_id" value="<%- post_id %>" />
+        <button class="btn-primary">Delete</button>
+      </form>
+    </div>
+  </body>
+</html>
