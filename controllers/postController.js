@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler")
 const { body, validationResult } = require("express-validator")
 
 exports.post_list = asyncHandler(async (req, res, next) => {
-  const allPosts = await Post.find().exec()
+  const allPosts = await Post.find().sort({ timestamp: -1 }).exec()
 
   res.render("post-list", { title: "Home", post_list: allPosts })
 })
@@ -23,16 +23,23 @@ exports.post_create_post = [
     .isLength({ min: 10 })
     .withMessage("Message must be at least 10 characters")
     .escape(),
+  // Transform text string into array of paragraphs
+  (req, res, next) => {
+    const text = req.body.text.replaceAll("\r\n\r\n", "\r\n").split("\r\n")
+    res.locals.text = text
+    next()
+  },
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req)
 
     const post = new Post({
       title: req.body.title,
-      text: req.body.text,
+      text: res.locals.text,
       user: req.user.id,
     })
 
     if (!errors.isEmpty()) {
+      post.text = req.body.text
       return res.render("post-form", { title: "Create post", post: post, errors: errors.array() })
     }
 
