@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body class="pattern-bg">
+    <%- include("navbar") %>
+    <div class="bg-slate-900 max-w-xl p-10 m-auto mt-16">
+      <h1 class="mb-4 text-white text-2xl font-bold"><%= title %></h1>
+      <p class="mb-4 text-slate-400">
+        Ready to be part of the private club? Gain exclusive benefits such as finally knowing who
+        wrote those damn posts (it's the only one really, sorry). To be part of the family, you'll
+        need the secret passcode.
+      </p>
+      <form class="w-full mt-4 flex flex-col gap-4" action="" method="POST">
+        <div>
+          <label class="text-slate-400" for="password">Secret passcode</label>
+          <input class="form-control" type="password" id="password" name="password" />
+        </div>
+        <% if (locals.errors && errors.length) { %>
+        <div class="flex flex-col gap-3">
+          <% for (let error of errors) { %>
+          <div class="bg-red-500 bg-opacity-20 text-red-500 p-2 rounded"><%= error.msg %></div>
+          <% } %>
+        </div>
+        <% } %>
+        <button class="btn-primary">Join</button>
+      </form>
+    </div>
+  </body>
+</html>

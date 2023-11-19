@@ -65,7 +65,6 @@ main().catch((err) => console.error(err))
 const indexRouter = require("./routes/index")
 const authRouter = require("./routes/auth")
 const postRouter = require("./routes/post")
-const authController = require("./controllers/authController")
 
 app.use(indexRouter)
 app.use(authRouter)
