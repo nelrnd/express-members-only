@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
+const dayjs = require("dayjs")
 
 const validateText = (text) => text.length > 0
 
@@ -12,6 +13,10 @@ const PostSchema = new Schema({
 
 PostSchema.virtual("url").get(function () {
   return `/posts/${this._id}`
+})
+
+PostSchema.virtual("formatted_date").get(function () {
+  return dayjs(this.timestamp).format("DD/MM/YYYY")
 })
 
 module.exports = mongoose.model("Post", PostSchema)

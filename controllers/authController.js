@@ -75,14 +75,15 @@ exports.sign_up_post = [
 
 exports.log_in_get = (req, res, next) => {
   const errors = []
+
   if (req.session.messages) {
     errors.push({ msg: req.session.messages.pop() })
     req.session.messages = undefined
   }
+
   res.render("log-in-form", {
     title: "Log in",
     errors: errors,
-    user: { email: process.env.USER_EMAIL, password: process.env.USER_PASSWORD },
   })
 }
 
